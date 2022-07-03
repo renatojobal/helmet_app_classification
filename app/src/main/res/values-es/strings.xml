@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MLKit Detección de cascos</string>
+    <string name="entry_java_subtitle">Corre MLKit Detección de cascos escrito en Java.</string>
+    <string name="entry_kotlin_subtitle">Corre MLKit Detección de cascos escrito en Koltin.</string>
+
+</resources>

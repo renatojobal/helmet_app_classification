@@ -17,6 +17,7 @@
 package com.google.mlkit.md.productsearch
 
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ class ProductAdapter(private val productList: List<Product>) : Adapter<ProductVi
         private val imageSize: Int = view.resources.getDimensionPixelOffset(R.dimen.product_item_image_size)
 
         fun bindProduct(product: Product) {
+            Log.d("ProductAdapter", "Product: $product")
             imageView.setImageDrawable(null)
             if (!TextUtils.isEmpty(product.imageUrl)) {
                 ImageDownloadTask(imageView, imageSize).execute(product.imageUrl)

@@ -307,7 +307,7 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
                     if (workflowState == WorkflowState.CONFIRMING)
                         R.string.prompt_hold_camera_steady
                     else
-                        R.string.prompt_point_at_a_bird
+                        R.string.prompt_point_at_a_person_in_bike
                 )
                 startCameraPreview()
             }

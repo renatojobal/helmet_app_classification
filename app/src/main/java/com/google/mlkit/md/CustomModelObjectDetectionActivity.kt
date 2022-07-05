@@ -42,6 +42,7 @@ import com.google.mlkit.md.camera.WorkflowModel
 import com.google.mlkit.md.camera.WorkflowModel.WorkflowState
 import com.google.mlkit.md.camera.CameraSource
 import com.google.mlkit.md.camera.CameraSourcePreview
+import com.google.mlkit.md.objectdetection.DetectedObjectInfo
 import com.google.mlkit.md.objectdetection.MultiObjectProcessor
 import com.google.mlkit.md.objectdetection.ProminentObjectProcessor
 import com.google.mlkit.md.productsearch.BottomSheetScrimView
@@ -49,6 +50,7 @@ import com.google.mlkit.md.productsearch.Product
 import com.google.mlkit.md.productsearch.ProductAdapter
 import com.google.mlkit.md.settings.PreferenceUtils
 import com.google.mlkit.md.settings.SettingsActivity
+import timber.log.Timber
 import java.io.IOException
 
 /** Demonstrates the object detection and custom classification workflow using camera preview.
@@ -115,12 +117,13 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
         currentWorkflowState = WorkflowState.NOT_STARTED
         cameraSource?.setFrameProcessor(
             if (PreferenceUtils.isMultipleObjectsMode(this)) {
-
+                Timber.d("As MultiObjectProcessor")
                 MultiObjectProcessor(
                     graphicOverlay!!, workflowModel!!,
                     CUSTOM_MODEL_PATH
                 )
             } else {
+                Timber.d("As ProminentObjectProcessor")
                 ProminentObjectProcessor(
                     graphicOverlay!!, workflowModel!!,
                     CUSTOM_MODEL_PATH
@@ -265,7 +268,7 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
                     return@Observer
                 }
                 currentWorkflowState = workflowState
-                Log.d(TAG, "Current workflow state: ${workflowState.name}")
+                Timber.d("Current workflow state: ${workflowState.name}")
 
                 if (PreferenceUtils.isAutoSearchEnabled(this@CustomModelObjectDetectionActivity)) {
                     stateChangeInAutoSearchMode(workflowState)
@@ -276,16 +279,16 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
 
             // Observes changes on the object to search, if happens, show detected object labels as
             // product search results.
-            objectToSearch.observe(this@CustomModelObjectDetectionActivity, Observer { detectObject ->
+            objectToSearch.observe(this@CustomModelObjectDetectionActivity) { detectObject : DetectedObjectInfo ->
                 val productList: List<Product> = detectObject.labels.map { label ->
                     Product("" /* imageUrl */, label.text, "" /* subtitle */)
                 }
                 workflowModel?.onSearchCompleted(detectObject, productList)
-            })
+            }
 
             // Observes changes on the object that has search completed, if happens, show the bottom sheet
             // to present search result.
-            searchedObject.observe(this@CustomModelObjectDetectionActivity, Observer { searchedObject ->
+            searchedObject.observe(this@CustomModelObjectDetectionActivity) { searchedObject ->
                 objectThumbnailForBottomSheet = searchedObject.getObjectThumbnail()
                 bottomSheetTitleView?.text = getString(R.string.buttom_sheet_custom_model_title)
                 productRecyclerView?.adapter = ProductAdapter(searchedObject.productList)
@@ -293,7 +296,7 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
                 bottomSheetBehavior?.peekHeight =
                     preview?.height?.div(2) ?: BottomSheetBehavior.PEEK_HEIGHT_AUTO
                 bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
-            })
+            }
         }
     }
 

@@ -115,6 +115,7 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
         currentWorkflowState = WorkflowState.NOT_STARTED
         cameraSource?.setFrameProcessor(
             if (PreferenceUtils.isMultipleObjectsMode(this)) {
+
                 MultiObjectProcessor(
                     graphicOverlay!!, workflowModel!!,
                     CUSTOM_MODEL_PATH

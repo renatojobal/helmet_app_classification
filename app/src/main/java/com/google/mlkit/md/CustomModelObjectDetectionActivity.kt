@@ -381,6 +381,6 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
 
     companion object {
         private const val TAG = "CustomModelODActivity"
-        private const val CUSTOM_MODEL_PATH = "custom_models/bird_classifier.tflite"
+        private const val CUSTOM_MODEL_PATH = "custom_models/helmet_classifier.tflite"
     }
 }

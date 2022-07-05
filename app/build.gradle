@@ -60,5 +60,8 @@ dependencies {
     // Custom model
     implementation 'com.google.mlkit:object-detection-custom:17.0.0'
 
+    // Timber just for logs
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     api 'com.google.guava:guava:30.1-jre'
 }

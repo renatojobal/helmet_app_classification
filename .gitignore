@@ -34,3 +34,5 @@ local.properties
 **/*.xcuserstate
 ios-snippets/Podfile.lock
 ios-snippets/mlkit-snippets.xcworkspace/xcuserdata/dfurlong.xcuserdatad/UserInterfaceState.xcuserstate
+/app/release/output-metadata.json
+/.keystore.jks

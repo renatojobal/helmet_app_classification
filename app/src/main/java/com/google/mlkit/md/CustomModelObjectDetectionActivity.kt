@@ -283,7 +283,9 @@ class CustomModelObjectDetectionActivity : AppCompatActivity(), OnClickListener 
                 val productList: List<Product> = detectObject.labels.map { label ->
                     Product("" /* imageUrl */, label.text, "" /* subtitle */)
                 }
-                workflowModel?.onSearchCompleted(detectObject, productList)
+                val listWithFirstElement = listOf<Product>(productList[0])
+
+                workflowModel?.onSearchCompleted(detectObject, listWithFirstElement)
             }
 
             // Observes changes on the object that has search completed, if happens, show the bottom sheet

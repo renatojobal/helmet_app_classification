@@ -32,8 +32,8 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
 
     private enum class DetectionMode(val titleResId: Int, val subtitleResId: Int) {
-        ODT_LIVE(R.string.mode_odt_live_title, R.string.mode_odt_live_subtitle),
-        ODT_STATIC(R.string.mode_odt_static_title, R.string.mode_odt_static_subtitle),
+
+        //ODT_STATIC(R.string.mode_odt_static_title, R.string.mode_odt_static_subtitle),
         CUSTOM_MODEL_LIVE(R.string.custom_model_live_title, R.string.custom_model_live_subtitle)
     }
 
@@ -97,9 +97,7 @@ class MainActivity : AppCompatActivity() {
                 itemView.setOnClickListener {
                     val activity = this@MainActivity
                     when (detectionMode) {
-                        DetectionMode.ODT_LIVE ->
-                            activity.startActivity(Intent(activity, LiveObjectDetectionActivity::class.java))
-                        DetectionMode.ODT_STATIC -> Utils.openImagePicker(activity)
+                        // DetectionMode.ODT_STATIC -> Utils.openImagePicker(activity)
                         DetectionMode.CUSTOM_MODEL_LIVE ->
                             activity.startActivity(Intent(activity, CustomModelObjectDetectionActivity::class.java))
                     }

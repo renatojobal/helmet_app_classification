@@ -2,9 +2,11 @@
 <h3 align="center">Helmet detector</h3>
 <p align="center"><strong> Aplicación para la clasificación de personas con casco y sin casco</strong>
 </p>
-<img src="https://user-images.githubusercontent.com/35740463/179665746-34fc8a50-5fd0-436b-9f20-083fa08441df.gif"  height="400" />
-<img src="https://user-images.githubusercontent.com/35740463/179665752-6d862923-ce03-4a87-8484-d4d3cb7711fe.gif"  height="400" />
-<img src="https://user-images.githubusercontent.com/35740463/179665949-6a9833ba-5603-476f-bd2d-c79c26d84545.gif" height="400" />
+
+![helmet_video1](https://user-images.githubusercontent.com/35740463/179666123-8796836c-e9d2-4ff7-998c-acb6d30e89c3.gif)
+![helmet_video2](https://user-images.githubusercontent.com/35740463/179666129-2ada9ea6-2b9d-4d81-91f9-63d177eb8559.gif)
+![helmet_video3](https://user-images.githubusercontent.com/35740463/179666135-3a06eda2-9df9-4e55-8107-549519a058ad.gif)
+
 
 
 En este repositorio se podrá encontrar el link al proyecto en Google Colab  [Helmet_detection_model.ipynb](https://github.com/renatojobal/helmet_app_classification/blob/v4.0/Helmet_detection_model.ipynb "Helmet_detection_model.ipynb") y además puedes descargar un apk yendo a los archivos adicionales del [último release](https://github.com/renatojobal/helmet_app_classification/releases).
